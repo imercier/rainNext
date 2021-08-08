@@ -4,24 +4,24 @@
 import boto3
 import botocore.session
 
-tableName="toto"
-
 dynamodb = boto3.resource('dynamodb')
+
+tableName = "rainNext"
 table = dynamodb.create_table(
     TableName=tableName,
     KeySchema=[
         {
-            'AttributeName': 'dataTime',
-            'KeyType': 'HASH'  #Partition key
+            'AttributeName': 'siteId',
+            'KeyType': 'HASH'  # Partition key
         },
         {
             'AttributeName': 'eventTime',
-            'KeyType': 'RANGE'  #Sort key
+            'KeyType': 'RANGE'  # Sort key
         }
     ],
     AttributeDefinitions=[
         {
-            'AttributeName': 'dataTime',
+            'AttributeName': 'siteId',
             'AttributeType': 'N'
         },
         {
